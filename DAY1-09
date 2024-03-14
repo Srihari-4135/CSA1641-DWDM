@@ -1,0 +1,35 @@
+# Marks data (assuming the data is in a vector named 'marks')
+marks <- c(55, 60, 71, 63, 55, 65, 50, 55, 58, 59, 61, 63, 65, 67, 71, 72, 75)
+
+# (a) Equal-frequency partitioning
+
+# Number of bins (3 in this case)
+num_bins <- 3
+
+# Split the data into equal-sized groups
+equal_freq_bins <- split(marks, cut(marks, breaks = seq(min(marks), max(marks), length.out = num_bins + 1)))
+
+# Print the bins
+print("Equal-frequency bins:")
+sapply(equal_freq_bins, summary)  # Print summary statistics for each bin
+
+# (b) Equal-width partitioning
+
+# Width of each bin (calculate based on range and number of bins)
+bin_width <- (max(marks) - min(marks)) / num_bins
+
+# Create bin breaks
+breaks <- seq(min(marks), max(marks) + bin_width, by = bin_width)
+
+# Partition the data into bins
+equal_width_bins <- cut(marks, breaks = breaks)
+
+# Print the bins and their labels
+print("Equal-width bins:")
+table(equal_width_bins, labels = paste("Bin", seq_along(breaks) - 1, sep = ""))  # Count data points in each bin with custom labels
+
+# Plot the histogram
+hist(marks, breaks = breaks, main = "Student Marks Distribution", xlab = "Marks", ylab = "Frequency")
+
+# Add a legend to the histogram (optional)
+# legend("topright", legend = paste("Bin", seq_along(breaks) - 1, sep = ""), fill = 1:num_bins)
