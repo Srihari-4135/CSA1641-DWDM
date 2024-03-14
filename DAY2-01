@@ -1,0 +1,21 @@
+Sample Covariance between B and C (Photograph Preference):
+# Data (assuming data is in a matrix named 'prefs')
+prefs <- matrix(c(18, 22, 20, 2, 28, 40, 20, 10, 40), nrow = 3, byrow = TRUE)
+cov_bc <- cov(prefs[, 2], prefs[, 3])  # Covariance between B and C
+
+print("Sample covariance between B and C:", cov_bc)
+
+Sample Covariance Matrix:
+cov_matrix <- cov(prefs)
+print("Sample covariance matrix:")
+print(cov_matrix)
+
+Sample Correlation between B and C:
+cor_bc <- cor(prefs[, 2], prefs[, 3])  # Correlation between B and C
+
+print("Sample correlation between B and C:", cor_bc)
+
+Sample Correlation Matrix:
+cor_matrix <- cor(prefs)
+print("Sample correlation matrix:")
+print(cor_matrix)
