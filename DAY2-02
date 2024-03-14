@@ -1,0 +1,42 @@
+# Sample price data (assuming it's in a vector named 'prices')
+prices <- c(1, 1, 5, 5, 5, 5, 5, 8, 8, 10, 10, 10, 10, 12, 14, 14, 14, 15, 15, 15, 15, 15, 15, 18, 18, 18, 18, 18, 20, 20, 20, 20, 20, 20, 21, 21, 21, 21, 25, 25, 25, 25, 25, 28, 28, 30)
+
+# (i) Equal-frequency Partitioning (3 bins)
+
+# Number of bins
+num_bins <- 3
+
+# Split data into bins using quantiles
+bins <- cut(prices, breaks = seq(min(prices), max(prices), length.out = num_bins + 1))
+
+# Print bin counts
+print("Frequency table:")
+table(bins)
+
+# (ii) Data Smoothing with Bin Means and Boundaries
+
+# Calculate bin means
+bin_means <- sapply(split(prices, bins), mean)
+
+# Calculate bin boundaries (edges)
+bin_boundaries <- c(min(prices), unique(bins)[1:-1], max(prices))
+
+# (iii) Plotting Histogram
+
+# Use 'hist' function with custom breaks and colors
+hist(
+    prices,
+    breaks = bin_boundaries,
+    col = "lightblue",  # Set histogram bar color
+    main = "Electronics Prices Distribution (Smoothed)",
+    xlab = "Price (USD)",
+    ylab = "Frequency"
+)
+
+# Add lines for bin means (optional)
+abline(v = bin_boundaries, col = "red", linetype = "dashed")  # Dashed red lines for bin boundaries
+abline(h = bin_means, col = "green", linetype = "dotted")   # Dotted green lines for bin means
+
+# Customize the plot further (optional)
+# You can add axis limits, labels, legend, etc. using functions like
+# xlim(), ylim(), xlab(), ylab(), and legend()
