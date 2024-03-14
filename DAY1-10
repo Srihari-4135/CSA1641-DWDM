@@ -1,0 +1,13 @@
+# Speed data (assuming km/h)
+speeds <- c(78.3, 81.8, 82.0, 74.2, 83.4, 84.5, 82.9, 77.5, 80.9, 70.6)
+
+# Calculate IQR
+percentiles <- quantile(speeds, c(0.25, 0.75))
+IQR <- percentiles[2] - percentiles[1]
+
+# Calculate standard deviation
+standard_deviation <- sd(speeds)
+
+# Print results
+print("Interquartile Range (IQR):", IQR, "km/h")
+print("Standard Deviation:", standard_deviation, "km/h")
