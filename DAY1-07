@@ -1,0 +1,17 @@
+# Create a vector for the number of pencils in each box
+pencils <- c(9, 25, 23, 12, 11, 6, 7, 8, 9, 10)
+
+# Calculate the mean (average) number of pencils
+mean_pencils <- mean(pencils)
+
+# Calculate the median (middle value) number of pencils
+median_pencils <- median(pencils)
+
+# Find the mode (most frequent value) of pencils
+pencil_counts <- table(pencils)  # Count occurrences of each value
+mode_pencils <- names(which.max(pencil_counts))  # Find the value with the highest count
+
+# Print the results with labels for better readability
+print("Mean pencils:", mean_pencils)
+print("Median pencils:", median_pencils)
+print("Mode pencils:", mode_pencils)
