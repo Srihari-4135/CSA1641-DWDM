@@ -4,18 +4,11 @@ data <- data.frame(
   frequency = c(200, 450, 300, 1500, 700, 44)
 )
 total_frequency <- sum(data$frequency)
-
 data$cumulative_frequency <- cumsum(data$frequency)
-
 median_index <- (total_frequency + 1) / 2
-
 median_interval <- which(data$cumulative_frequency >= median_index)[1]
-
 lower_bound <- data$lower_bound[median_interval]
 upper_bound <- data$upper_bound[median_interval]
-
 frequency_in_interval <- data$frequency[median_interval]
-
 median <- lower_bound + (median_index - data$cumulative_frequency[median_interval-1]) * (upper_bound - lower_bound) / frequency_in_interval
-
 cat("The approximate median value is:", median)
