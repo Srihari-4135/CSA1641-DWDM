@@ -1,0 +1,29 @@
+# Load libraries (if not already loaded)
+library(tidyverse)
+
+# Read the data (assuming the file is in your working directory)
+data <- read.csv("diabetes.csv")
+
+# Explore data (optional)
+str(data)  # Check data structure
+
+# Filter for valid Age and BloodPressure (not 0)
+data_filtered <- data %>% filter(Age > 0, BloodPressure > 0)
+
+# Scatter Plot - Blood Pressure vs Age
+ggplot(data_filtered, aes(x = Age, y = BloodPressure)) +
+  geom_point(alpha = 0.5) +  # Adjust point transparency
+  labs(title = "Blood Pressure vs Age (Scatter Plot)",
+       x = "Age", y = "Blood Pressure") +
+  theme_bw()
+
+# Bar Chart - Average Blood Pressure by Age Group (10 year bins)
+data_filtered %>% 
+  mutate(Age_group = floor(Age / 10) * 10) %>%  # Create age groups (10 year bins)
+  group_by(Age_group) %>%
+  summarize(Avg_BloodPressure = mean(BloodPressure)) %>%  # Calculate average BP per group
+  ggplot(aes(x = Age_group, y = Avg_BloodPressure)) +
+  geom_bar(stat = "identity", fill = "skyblue") +  # Customize bar color
+  labs(title = "Avg. Blood Pressure by Age Group (Bar Chart)",
+       x = "Age Group", y = "Avg. Blood Pressure") +
+  theme_bw()
