@@ -1,0 +1,12 @@
+# Load library (if not already loaded)
+library(ggplot2)
+
+# Load data (assuming mtcars is available)
+data(mtcars)
+
+# Create the plot
+ggplot(mtcars, aes(x = wt, y = mpg, color = cyl)) +
+  geom_line(aes(linetype = cyl)) +  # Add linetype for visual distinction
+  labs(title = "Fuel Efficiency (MPG) vs Weight (wt)",
+       x = "Weight (1000 lbs)", y = "Miles Per Gallon") +
+  theme_bw()  # Apply a black and white theme for better readability
