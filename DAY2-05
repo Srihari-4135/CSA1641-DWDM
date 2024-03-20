@@ -1,0 +1,11 @@
+# Assuming "AirPassengers" data is available (e.g., loaded from a package)
+
+# Set breaks (bin edges)
+breaks <- seq(from = 100, to = 700, by = 150)
+
+# Create the histogram
+hist(AirPassengers, breaks = breaks, xlim = c(100, 700), main = "Air Passengers (150-wide bins)")
+
+# Add labels and title
+xlabel("Number of Passengers")
+ylabel("Frequency")
