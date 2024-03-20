@@ -1,0 +1,10 @@
+# Data
+data <- c(200, 300, 400, 600, 1000)
+
+# (a) Min-Max Normalization (0 to 1)
+normalized_min_max <- (data - min(data)) / (max(data) - min(data))
+print("Normalized data (min-max):", normalized_min_max)
+
+# (b) Z-score Normalization
+normalized_zscore <- scale(data)  # Using scale() function for z-score
+print("Normalized data (z-score):", normalized_zscore)
