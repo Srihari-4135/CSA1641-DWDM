@@ -1,0 +1,31 @@
+
+if (!require("arules")) install.packages("arules")
+library(arules)
+
+# Sample Data (Replace with your actual data in transaction format)
+transactions <- TxList(
+  c("bread", "milk", "cereal"),
+  c("bread", "milk"),
+  c("milk", "cereal", "eggs"),
+  c("bread", "eggs"),
+  c("milk", "eggs"),
+  c("bread", "cereal")
+)
+
+# Minimum Support (3 transactions)
+min_sup <- 3
+
+# Create an Apriori model
+apriori_model <- apriori(transactions, minlen = 1, maxlen = 2, minSupp = min_sup)
+
+# Print frequent itemsets
+inspect(apriori_model)
+
+# Set minimum confidence (50%)
+min_conf <- 0.5
+
+# Generate association rules
+rules <- apriori(transactions, minlen = 2, maxlen = 2, minSupp = min_sup, conf = min_conf)
+
+# Print association rules
+inspect(rules)
