@@ -1,0 +1,14 @@
+# Create the boxplot
+boxplot(player_points, main = "Points Scored by Tennis Players", 
+        ylab = "Points", xlab = "Player")
+
+# Add options to customize the boxplot (optional)
+# You can uncomment these lines to add features
+
+# Add horizontal lines for the median and quartiles
+# abline(h = boxplot.stats(player_points)$outliers, col = "red", lty = 2)  # Outliers
+# abline(h = boxplot.stats(player_points)$box[!is.na(boxplot.stats(player_points)$box)], col = "blue")  # Box quartiles
+# abline(h = boxplot.stats(player_points)$med, col = "green", lty = 2)  # Median
+
+# Notches for medians (shows confidence intervals)
+# notch = TRUE
