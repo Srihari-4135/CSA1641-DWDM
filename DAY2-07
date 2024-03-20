@@ -1,0 +1,16 @@
+# 1. Visualize the Relationship (Scatter Plot)
+plot(water$mortality, water$hardness, main = "Mortality vs Hardness", 
+     xlab = "Hardness", ylab = "Mortality Rate")
+
+# 2. Fit the Linear Regression Model
+model <- lm(mortality ~ hardness, data = water)
+
+# 3. Print Model Summary
+summary(model)
+
+# 4. Predict Mortality for Hardness 88
+new_data <- data.frame(hardness = 88)
+predicted_mortality <- predict(model, newdata = new_data)
+
+# Print the predicted mortality
+cat("Predicted Mortality for Hardness 88:", predicted_mortality, "\n")
